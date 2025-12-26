@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import DashboardLayout from './components/DashboardLayout';
 import Dashboard from './pages/Dashboard';
@@ -46,15 +46,15 @@ function App() {
         
         <Route path="/" element={user ? <DashboardLayout user={user} onLogout={handleLogout} /> : <Navigate to="/login" />}>
           <Route index element={<Navigate to="/dashboard" />} />
-          <Route path="dashboard" element={<Dashboard user={user} />} />
-          <Route path="attendance" element={<Attendance user={user} />} />
-          <Route path="requests" element={<Requests user={user} />} />
-          <Route path="bulk" element={<BulkAttendance user={user} />} />
+          <Route path="dashboard" element={<Dashboard user={user!} />} />
+          <Route path="attendance" element={<Attendance user={user!} />} />
+          <Route path="requests" element={<Requests user={user!} />} />
+          <Route path="bulk" element={<BulkAttendance user={user!} />} />
           <Route path="timeline" element={<Timeline />} />
           <Route path="statistics" element={<Statistics />} />
-          <Route path="profile" element={<Profile user={user} />} />
+          <Route path="profile" element={<Profile user={user!} />} />
           <Route path="employees" element={user?.role === 'Admin' ? <Employees /> : <Navigate to="/" />} />
-          <Route path="settings" element={user?.role === 'Admin' ? <Settings user={user} /> : <Navigate to="/" />} />
+          <Route path="settings" element={user?.role === 'Admin' ? <Settings user={user!} /> : <Navigate to="/" />} />
         </Route>
       </Routes>
     </HashRouter>
