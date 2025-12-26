@@ -1,0 +1,7 @@
+{
+  "name": "Timekeeper Pro",
+  "description": "A modern, responsive attendance tracking application featuring individual calendars, bulk timekeeping, timeline views, and statistics.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
